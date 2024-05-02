@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Editor from "./Editor";
 
 function App() {
+  const [html, setHtml] = useState("");
+  const [css, setCss] = useState("");
+  const [js, setJs] = useState("");
+
   return (
     <>
-      <div className="top-pane">
-        <Editor />
-        <Editor />
-        <Editor />
+      <div className="pane top-pane">
+        <Editor
+          language="xml"
+          displayName="HTML"
+          value={html}
+          onChange={setHtml}
+        />
+        <Editor
+          language="css"
+          displayName="CSS"
+          value={css}
+          onChange={setCss}
+        />
+        <Editor
+          language="javascript"
+          displayName="JS"
+          value={js}
+          onChange={setJs}
+        />
       </div>
       <div className="pane">
         <iframe
@@ -16,7 +35,7 @@ function App() {
           frameBorder="0"
           width="100%"
           height="100%"
-        ></iframe>
+        />
       </div>
     </>
   );
